@@ -63,7 +63,7 @@ The application will start on docker and by default can be accessed at http://lo
 
 ### Jenkins
 
-The application has a JenkinsFile which contains a pipeline to build, test and deploy the application. The JenkinsFile is written in Groovy. This file will fetch from remote repository, build the application, run the tests and deploy the application to local docker container.
+The application has a `JenkinsFile` which contains a pipeline to build, test and deploy the application. The JenkinsFile is written in Groovy. This file will fetch from remote repository, build the application, run the tests and deploy the application to local docker container.
 
 ## Authors
 
@@ -116,3 +116,11 @@ This project uses different SOLID principles:
 
 4. **Dependency Inversion Principle (DIP)**: The project uses dependency injection (a form of DIP) to reduce the coupling between classes. For example, `ApiController` depends on abstractions (`OnlineService` and `OfflineService`) rather than concrete classes.
 
+
+## HATEOAS Principles in the Project
+
+This project uses the HATEOAS (Hypermedia as the Engine of Application State) principles of RESTful API design:
+
+1. The API responses include links. These links help the client navigate to other resources without needing to hard-code URLs.
+2. The client can discover all the actions it can perform on a resource by examining the links in the resource's representation. This makes the API more flexible and easier to evolve over time. 
+3. Each message includes enough information to describe how to process the message. This often involves including links with rel attributes that indicate the purpose of the link.
