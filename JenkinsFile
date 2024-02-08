@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+       environment {
+        PATH = "/Applications/Docker.app/Contents/Resources/bin:${env.PATH}"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from GitHub using provided credentials
+                script {
+                    git branch: 'main', credentialsId: '116c7468-d9ec-4cad-8f13-0130b1cd1707', url: 'git@github.com:prathamesh610/starwars-be.git'
+                }
+            }
+
+        }
+         stage('Clean Build') {
+            steps {
+                // Clean Gradle build
+                sh './gradlew clean build'
+            }
+        }
+
+
+        stage('Docker Build'){
+
+            steps{
+                sh 'docker build -t starwars .'
+            }
+        }
+        stage('Docker Deploy'){
+            steps{
+                sh 'docker run -d -p 8081:8080 starwars'
+
+            }
+        }
+    }
+}
