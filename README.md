@@ -53,7 +53,7 @@ Then, you can run the application in a Docker container with:
 docker run -p 8081:8080 starwars-app
 ```
 
-The application will start and by default can be accessed at http://localhost:8080.
+The application will start and by default can be accessed at http://localhost:8081.
 
 
 ## Authors
