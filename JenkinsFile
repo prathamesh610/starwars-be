@@ -15,6 +15,10 @@ pipeline {
         }
          stage('Clean Build') {
             steps {
+                // Add credentials
+                sh 'echo "" >> src/main/resources/application.properties'
+                sh 'echo "spring.security.user.name=admin" >> src/main/resources/application.properties'
+                sh 'echo "spring.security.user.password=password" >> src/main/resources/application.properties'
                 // Clean Gradle build
                 sh './gradlew clean build'
             }
