@@ -1,0 +1,47 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+bootJar {
+	archivesBaseName = 'starwars-app'
+}
+group = 'com.publicissapient'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.14.0'
+	compileOnly 'org.projectlombok:lombok'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-hateoas', version: '3.2.2'
+	implementation group: 'org.springframework.hateoas', name: 'spring-hateoas', version: '2.2.0'
+
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
