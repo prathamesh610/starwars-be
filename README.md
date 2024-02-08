@@ -73,9 +73,15 @@ The application has a `JenkinsFile` which contains a pipeline to build, test and
 
 The Starwars Application is designed with a microservices architecture in mind, leveraging the power of Spring Boot.
 
-### Design
+### Design Patterns
 
-The application follows the MVC (Model-View-Controller) design pattern. The `Controller` layer handles HTTP requests and responses, the `Service` layer contains business logic, and the `Repository` layer interacts with the database.
+1. **Model-View-Controller (MVC)**: This is a common design pattern in web applications where the application is divided into three interconnected parts. This is done to separate internal representations of information from the ways information is presented to and accepted from the user. In this project, the `ApiController` acts as the controller and OnlineService and OfflineService act as the service layer for business logic.
+
+2. **Dependency Injection (DI)**: This is a form of inversion of control. This means that a component's dependencies are not part of the component's internals, they are set from the outside. This is evident from the use of Spring's `@Autowired` annotation, which allows Spring to resolve and inject a bean's dependencies.
+
+3. **Factory Pattern**: This is a creational pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. The `SwComponentModelFactory` class in the project seems to be an implementation of this pattern.
+
+4. **Singleton Pattern**: Spring Boot, by default, uses the Singleton Pattern for the creation of beans. This means that Spring Boot creates only a single instance of each bean by default, and all requests for beans with an ID or IDs matching that bean definition result in that one specific bean instance being returned by the Spring container. This project also uses LoggerFactory to get a singleton instance of the logger.
 
 ### Implementation
 
